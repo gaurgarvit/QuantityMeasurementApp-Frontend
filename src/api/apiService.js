@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = "https://quantity-measurement-app-production-de85.up.railway.app/";
+const API_BASE_URL = "https://quantity-measurement-app-production-5f67.up.railway.app/";
 
 const api = axios.create({
   baseURL: API_BASE_URL,
