@@ -1,109 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quantity Measurement App</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Quantity Measurement App</h1>
-            <div id="user-controls">
-                <button id="show-auth-btn">Login / Register</button>
-                <button id="logout-btn" class="hidden">Logout</button>
-            </div>
-        </header>
-
-        <div id="auth-section" class="card hidden">
-            <div class="auth-tabs">
-                <button id="login-tab" class="active">Login</button>
-                <button id="register-tab">Register</button>
-            </div>
-            
-            <form id="auth-form">
-                <input type="text" id="username" placeholder="Username" required>
-                <input type="password" id="password" placeholder="Password" required>
-                <button type="submit" id="auth-btn">Login</button>
-                <button type="button" id="cancel-auth">Cancel</button>
-            </form>
-            <p id="auth-message"></p>
-        </div>
-
-        <main>
-            <!-- Measurement Card - Always Visible -->
-            <div id="measurement-section" class="card">
-                <h2>New Operation</h2>
-                <div class="form-group">
-                    <label>Measurement Type:</label>
-                    <select id="measurement-type">
-                        <option value="LENGTH">Length</option>
-                        <option value="VOLUME">Volume</option>
-                        <option value="WEIGHT">Weight</option>
-                        <option value="TEMPERATURE">Temperature</option>
-                    </select>
-                </div>
-
-                <div class="operation-grid">
-                    <div class="input-group">
-                        <label>From Value:</label>
-                        <input type="number" id="from-value" step="any" placeholder="0.0">
-                        <select id="from-unit"></select>
-                    </div>
-
-                    <div class="input-group">
-                        <label>To Value (for compare/add/sub):</label>
-                        <input type="number" id="to-value" step="any" placeholder="0.0">
-                        <select id="to-unit"></select>
-                    </div>
-
-                    <div class="input-group">
-                        <label>Target Unit (for convert):</label>
-                        <select id="target-unit"></select>
-                    </div>
-                </div>
-
-                <div class="actions">
-                    <button class="op-btn" data-op="convert">Convert</button>
-                    <button class="op-btn" data-op="compare">Compare</button>
-                    <button class="op-btn" data-op="add">Add (+)</button>
-                    <button class="op-btn" data-op="subtract">Subtract (-)</button>
-                    <button class="op-btn" data-op="divide">Divide (/)</button>
-                </div>
-
-                <div id="result-area" class="hidden">
-                    <h3>Result:</h3>
-                    <p id="result-text"></p>
-                </div>
-            </div>
-
-            <!-- History Card - Only Visible when Logged In -->
-            <div id="history-section" class="card hidden">
-                <h2>Operation History</h2>
-                <div class="history-actions">
-                    <button id="refresh-history">Refresh History</button>
-                    <button id="show-errored">Show Errors</button>
-                </div>
-                <div class="table-container">
-                    <table id="history-table">
-                        <thead>
-                            <tr>
-                                <th>Type</th>
-                                <th>Operation</th>
-                                <th>Input 1</th>
-                                <th>Input 2</th>
-                                <th>Result</th>
-                                <th>Time</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
-            </div>
-        </main>
-    </div>
-
-    <script src="app.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
