@@ -1,7 +1,7 @@
 export const MEASUREMENT_TYPES = {
   LENGTH: {
     label: 'Length',
-    units: ['INCH', 'FEET', 'YARD', 'MILE', 'CENTIMETER', 'METER', 'KILOMETER'],
+    units: ['INCHES', 'FEET', 'YARDS', 'CENTIMETERS'],
   },
   VOLUME: {
     label: 'Volume',
@@ -9,7 +9,7 @@ export const MEASUREMENT_TYPES = {
   },
   WEIGHT: {
     label: 'Weight',
-    units: ['GRAM', 'KILOGRAM', 'TONNE'],
+    units: ['GRAM', 'KILOGRAM', 'TONNE', 'POUND', 'MILLIGRAM'],
   },
   TEMPERATURE: {
     label: 'Temperature',

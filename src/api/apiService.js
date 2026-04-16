@@ -38,24 +38,24 @@ api.interceptors.response.use(
 
 export const authService = {
   login: (credentials) => api.post('/auth/login', credentials),
-  register: (userData) => api.post('/auth/register', userData),
+  register: (userData) => api.post('/auth/signup', userData),
   logout: () => {
     localStorage.removeItem('token');
   },
 };
 
 export const measurementService = {
-  compare: (data) => api.post('/api/v1/quantities/compare', data),
-  convert: (data) => api.post('/api/v1/quantities/convert', data),
-  add: (data) => api.post('/api/v1/quantities/add', data),
-  subtract: (data) => api.post('/api/v1/quantities/subtract', data),
-  divide: (data) => api.post('/api/v1/quantities/divide', data),
-  getHistoryByOperation: (op) => api.get(`/api/v1/quantities/history/operation/${op}`),
-  getHistoryByType: (type) => api.get(`/api/v1/quantities/history/type/${type}`),
-  getErroredHistory: () => api.get('/api/v1/quantities/history/errored'),
-  getAllHistory: () => api.get('/api/v1/quantities/history/all'),
-  getUserHistory: () => api.get('/api/v1/quantities/history/user'),
-  getOperationCount: (op) => api.get(`/api/v1/quantities/count/${op}`),
+  compare: (data) => api.post('/api/measurements/compare', data),
+  convert: (data) => api.post('/api/measurements/convert', data),
+  add: (data) => api.post('/api/measurements/add', data),
+  subtract: (data) => api.post('/api/measurements/subtract', data),
+  divide: (data) => api.post('/api/measurements/divide', data),
+  getHistoryByOperation: (op) => api.get(`/api/measurements/history/${op}`),
+  getHistoryByType: (type) => api.get(`/api/measurements/history/type/${type}`),
+  getErroredHistory: () => api.get('/api/measurements/history/errored'),
+  getAllHistory: () => api.get('/api/measurements/history'),
+  getUserHistory: () => api.get('/api/measurements/history'), // Maps to all history for now
+  getOperationCount: (op) => api.get(`/api/measurements/count/${op}`),
 };
 
 export default api;

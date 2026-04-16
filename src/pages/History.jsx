@@ -165,18 +165,18 @@ const History = () => {
                     <td className="px-6 py-4">
                       <span className="font-semibold text-slate-700 capitalize">{item.operation}</span>
                     </td>
-                    <td className="px-6 py-4 text-slate-600">{item.measurementType}</td>
+                    <td className="px-6 py-4 text-slate-600">{item.thisMeasurementType}</td>
                     <td className="px-6 py-4">
                       <div className="text-sm text-slate-600">
-                        {item.inputValue1} {item.inputUnit1}
-                        {item.inputValue2 !== null && item.inputUnit2 !== null && ` vs ${item.inputValue2} ${item.inputUnit2}`}
+                        {item.thisValue} {item.thisUnit}
+                        {item.thatUnit && ` vs ${item.thatValue} ${item.thatUnit}`}
                       </div>
                     </td>
                     <td className="px-6 py-4">
                       <div className="font-medium text-slate-900">{item.resultString || `${item.resultValue?.toFixed(4).replace(/\.?0+$/, "")} ${item.resultUnit}`}</div>
                     </td>
                     <td className="px-6 py-4">
-                      {getStatusBadge(item.errored)}
+                      {getStatusBadge(item.error)}
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex items-center text-sm text-slate-500">

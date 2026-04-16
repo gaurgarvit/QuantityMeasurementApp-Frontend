@@ -13,10 +13,10 @@ const Dashboard = () => {
   const [type, setType] = useState('LENGTH');
   const [formData, setFormData] = useState({
     thisValue: 0,
-    thisUnit: 'INCH',
+    thisUnit: 'INCHES',
     thatValue: 0,
-    thatUnit: 'INCH',
-    targetUnit: 'INCH'
+    thatUnit: 'INCHES',
+    targetUnit: 'INCHES'
   });
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -29,7 +29,7 @@ const Dashboard = () => {
         const counts = {};
         for (const op of OPERATIONS) {
           const res = await measurementService.getOperationCount(op.id);
-          counts[op.id] = res.data;
+          counts[op.id] = res.data.count;
         }
         setStats(counts);
       } catch (err) {
@@ -64,21 +64,37 @@ const Dashboard = () => {
     setError('');
     setResult(null);
 
-    const payload = {
-      ...formData,
-      thisMeasurementType: type,
-      thatMeasurementType: type,
-      targetMeasurementType: type
+    let payload = {};
+    const thisQuantity = {
+      value: parseFloat(formData.thisValue),
+      unit: formData.thisUnit
+    };
+    const thatQuantity = {
+      value: parseFloat(formData.thatValue),
+      unit: formData.thatUnit
     };
 
     try {
       let response;
       switch (activeOp) {
-        case 'compare': response = await measurementService.compare(payload); break;
-        case 'convert': response = await measurementService.convert(payload); break;
-        case 'add': response = await measurementService.add(payload); break;
-        case 'subtract': response = await measurementService.subtract(payload); break;
-        case 'divide': response = await measurementService.divide(payload); break;
+        case 'compare': 
+          payload = { thisQuantity, thatQuantity };
+          response = await measurementService.compare(payload); 
+          break;
+        case 'convert': 
+          payload = { thisQuantity, targetUnit: formData.targetUnit };
+          response = await measurementService.convert(payload); 
+          break;
+        case 'add': 
+        case 'subtract':
+          payload = { thisQuantity, thatQuantity, targetUnit: formData.targetUnit };
+          if (activeOp === 'add') response = await measurementService.add(payload);
+          else response = await measurementService.subtract(payload);
+          break;
+        case 'divide': 
+          payload = { thisQuantity, thatQuantity };
+          response = await measurementService.divide(payload); 
+          break;
         default: throw new Error('Invalid operation');
       }
 

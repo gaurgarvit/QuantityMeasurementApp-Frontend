@@ -17,7 +17,7 @@ const Login = () => {
 
     try {
       const response = await authService.login({ username, password });
-      localStorage.setItem('token', response.data);
+      localStorage.setItem('token', response.data.token);
       navigate('/dashboard');
     } catch (err) {
       setError(err.response?.data?.message || 'Invalid username or password');
